@@ -130,7 +130,7 @@ SAAS_SERVICES = [
     },
     {
         "id": "aws",
-        "name": "Amazon Web Services",
+        "name": "AWS (Amazon Web Services)",
         "category": "Hosting",
         "description": "Comprehensive cloud computing platform with extensive services",
         "tiers": [
