@@ -214,7 +214,7 @@ class SaaSScoutAPITester:
             return self.log_test("Sorting Functionality", False, f"- Error: {str(e)}")
 
     def test_specific_services(self) -> bool:
-        """Test for specific expected services"""
+        """Test for specific expected services including new Heroku and AWS"""
         try:
             response = requests.get(f"{self.base_url}/api/services", timeout=10)
             if response.status_code != 200:
@@ -223,16 +223,74 @@ class SaaSScoutAPITester:
             data = response.json()
             service_names = [s.get("name", "") for s in data]
             
-            expected_services = ["Render", "Vercel", "OpenAI", "Anthropic", "MongoDB Atlas", "SendGrid"]
+            expected_services = ["Render", "Vercel", "OpenAI", "Anthropic", "MongoDB Atlas", "SendGrid", "Heroku", "AWS (Amazon Web Services)"]
             missing_services = [s for s in expected_services if s not in service_names]
             
             if missing_services:
                 return self.log_test("Specific Services Check", False, f"- Missing services: {missing_services}")
             
-            return self.log_test("Specific Services Check", True, f"- All expected services found: {expected_services}")
+            return self.log_test("Specific Services Check", True, f"- All expected services found including new Heroku and AWS")
             
         except Exception as e:
             return self.log_test("Specific Services Check", False, f"- Error: {str(e)}")
+
+    def test_hosting_services(self) -> bool:
+        """Test hosting category has 7 services including Heroku and AWS"""
+        try:
+            response = requests.get(f"{self.base_url}/api/services?category=Hosting", timeout=10)
+            if response.status_code != 200:
+                return self.log_test("Hosting Services Check", False, f"- Status: {response.status_code}")
+            
+            data = response.json()
+            service_names = [s.get("name", "") for s in data]
+            
+            expected_hosting = ["Render", "Vercel", "Netlify", "Railway", "Fly.io", "Heroku", "AWS (Amazon Web Services)"]
+            
+            if len(data) != 7:
+                return self.log_test("Hosting Services Check", False, f"- Expected 7 hosting services, got {len(data)}")
+            
+            missing_hosting = [s for s in expected_hosting if s not in service_names]
+            if missing_hosting:
+                return self.log_test("Hosting Services Check", False, f"- Missing hosting services: {missing_hosting}")
+            
+            return self.log_test("Hosting Services Check", True, f"- Found all 7 hosting services: {service_names}")
+            
+        except Exception as e:
+            return self.log_test("Hosting Services Check", False, f"- Error: {str(e)}")
+
+    def test_new_services_search(self) -> bool:
+        """Test search functionality for new services (Heroku, AWS, Amazon)"""
+        try:
+            # Test search for Heroku
+            response = requests.get(f"{self.base_url}/api/services?search=Heroku", timeout=10)
+            if response.status_code != 200:
+                return self.log_test("New Services Search", False, f"- Status: {response.status_code}")
+            
+            data = response.json()
+            heroku_found = any(s.get("name") == "Heroku" for s in data)
+            if not heroku_found:
+                return self.log_test("New Services Search", False, f"- Heroku not found in search results")
+            
+            # Test search for AWS
+            response2 = requests.get(f"{self.base_url}/api/services?search=AWS", timeout=10)
+            if response2.status_code == 200:
+                data2 = response2.json()
+                aws_found = any("AWS" in s.get("name", "") for s in data2)
+                if not aws_found:
+                    return self.log_test("New Services Search", False, f"- AWS not found in search results")
+            
+            # Test search for Amazon
+            response3 = requests.get(f"{self.base_url}/api/services?search=Amazon", timeout=10)
+            if response3.status_code == 200:
+                data3 = response3.json()
+                amazon_found = any("Amazon" in s.get("name", "") for s in data3)
+                if not amazon_found:
+                    return self.log_test("New Services Search", False, f"- Amazon not found in search results")
+            
+            return self.log_test("New Services Search", True, f"- Search working for Heroku, AWS, and Amazon")
+            
+        except Exception as e:
+            return self.log_test("New Services Search", False, f"- Error: {str(e)}")
 
     def run_all_tests(self) -> bool:
         """Run all backend tests"""
