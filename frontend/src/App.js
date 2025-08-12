@@ -181,7 +181,7 @@ function App() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                SaaS Scout
+                PlatformGuide
               </h1>
               <p className={`mt-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Compare pricing of popular SaaS providers & AI tools</p>
             </div>
