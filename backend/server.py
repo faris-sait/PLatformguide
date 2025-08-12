@@ -32,9 +32,9 @@ class SaasService(BaseModel):
     link: str
     logo_url: Optional[str] = None
 
-# Comprehensive SaaS dataset with detailed pricing tiers in INR
+# Enhanced SaaS dataset with accurate pricing tiers in INR and verified URLs
 SAAS_SERVICES = [
-    # Hosting Platforms
+    # Hosting Platforms - Enhanced with Heroku and AWS
     {
         "id": "render",
         "name": "Render",
@@ -49,7 +49,7 @@ SAAS_SERVICES = [
         "advantages": ["Easy deployment", "Free tier available", "Auto SSL certificates", "Git integration"],
         "disadvantages": ["Cold starts on free tier", "Limited regions", "Higher costs for high traffic"],
         "link": "https://render.com/pricing",
-        "logo_url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=100&h=100&fit=crop"
+        "logo_url": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/render.svg"
     },
     {
         "id": "vercel",
@@ -64,7 +64,7 @@ SAAS_SERVICES = [
         "advantages": ["Fast global CDN", "Perfect for Next.js", "Excellent DX", "Edge functions"],
         "disadvantages": ["Higher costs for bandwidth", "Limited backend options", "Function timeout limits"],
         "link": "https://vercel.com/pricing",
-        "logo_url": "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=100&h=100&fit=crop"
+        "logo_url": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/vercel.svg"
     },
     {
         "id": "netlify",
@@ -79,8 +79,8 @@ SAAS_SERVICES = [
         ],
         "advantages": ["Generous free tier", "Form handling", "Split testing", "Branch deploys"],
         "disadvantages": ["Build minute limits", "Pricing per site", "Function limitations"],
-        "link": "https://netlify.com/pricing",
-        "logo_url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=100&h=100&fit=crop"
+        "link": "https://www.netlify.com/pricing/",
+        "logo_url": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/netlify.svg"
     },
     {
         "id": "railway",
@@ -95,7 +95,7 @@ SAAS_SERVICES = [
         "advantages": ["Simple deployment", "Database included", "Resource-based pricing", "Docker support"],
         "disadvantages": ["No free tier", "Usage-based billing", "Limited documentation"],
         "link": "https://railway.app/pricing",
-        "logo_url": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=100&h=100&fit=crop"
+        "logo_url": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/railway.svg"
     },
     {
         "id": "flyio",
@@ -109,8 +109,40 @@ SAAS_SERVICES = [
         ],
         "advantages": ["Global edge deployment", "Docker native", "Low latency", "Pay per resource"],
         "disadvantages": ["Complex pricing", "Learning curve", "Limited free tier"],
-        "link": "https://fly.io/pricing",
-        "logo_url": "https://images.unsplash.com/photo-1520637836862-4d197d17c92a?w=100&h=100&fit=crop"
+        "link": "https://fly.io/plans",
+        "logo_url": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/fly.svg"
+    },
+    {
+        "id": "heroku",
+        "name": "Heroku",
+        "category": "Hosting",
+        "description": "Platform as a Service (PaaS) with easy deployment and scaling",
+        "tiers": [
+            {"name": "Eco", "price": "₹415/month", "features": ["1,000 dyno hours", "Sleeps after 30 min", "Shared resources"]},
+            {"name": "Basic", "price": "₹581/month", "features": ["Always-on dynos", "Up to 10 process types", "Basic metrics"]},
+            {"name": "Standard", "price": "₹2,075/month", "features": ["Better performance", "Autoscaling", "Enhanced metrics"]},
+            {"name": "Performance", "price": "₹20,750/month", "features": ["Dedicated resources", "Advanced metrics", "Enterprise features"]}
+        ],
+        "advantages": ["Easy to use", "Great for beginners", "Add-on ecosystem", "Git-based deployment"],
+        "disadvantages": ["Can be expensive", "Vendor lock-in", "Limited customization", "Cold starts on lower tiers"],
+        "link": "https://www.heroku.com/pricing",
+        "logo_url": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/heroku.svg"
+    },
+    {
+        "id": "aws",
+        "name": "Amazon Web Services",
+        "category": "Hosting",
+        "description": "Comprehensive cloud computing platform with extensive services",
+        "tiers": [
+            {"name": "Free Tier", "price": "₹0/month", "features": ["12 months free", "750 hours EC2 t2.micro", "Limited services"]},
+            {"name": "t2.micro", "price": "₹79/month", "features": ["1 vCPU", "1 GB RAM", "EBS-optimized"]},
+            {"name": "t3.medium", "price": "₹2,490/month", "features": ["2 vCPUs", "4 GB RAM", "Up to 5 Gbps network"]},
+            {"name": "Enterprise", "price": "Custom", "features": ["Dedicated support", "Custom configurations", "Volume discounts"]}
+        ],
+        "advantages": ["Most comprehensive", "Global presence", "Enterprise-grade", "Extensive services"],
+        "disadvantages": ["Complex pricing", "Steep learning curve", "Can be expensive", "Over-engineering risk"],
+        "link": "https://aws.amazon.com/pricing/",
+        "logo_url": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonaws.svg"
     },
 
     # LLM/AI Services
@@ -127,7 +159,7 @@ SAAS_SERVICES = [
         "advantages": ["State-of-the-art models", "Wide API coverage", "Extensive documentation", "Fast inference"],
         "disadvantages": ["Higher costs", "Rate limits", "Content policies", "Token-based pricing"],
         "link": "https://openai.com/pricing",
-        "logo_url": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=100&h=100&fit=crop"
+        "logo_url": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/openai.svg"
     },
     {
         "id": "anthropic", 
@@ -141,8 +173,8 @@ SAAS_SERVICES = [
         ],
         "advantages": ["Safety focused", "Long context window", "Good reasoning", "Constitutional AI"],
         "disadvantages": ["Higher pricing", "Limited availability", "Newer ecosystem", "Less tooling"],
-        "link": "https://claude.ai/pricing",
-        "logo_url": "https://images.unsplash.com/photo-1634969450545-63ac48b97d37?w=100&h=100&fit=crop"
+        "link": "https://www.anthropic.com/pricing",
+        "logo_url": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/anthropic.svg"
     },
     {
         "id": "google-ai",
@@ -157,7 +189,7 @@ SAAS_SERVICES = [
         "advantages": ["Multimodal capabilities", "Competitive pricing", "Google ecosystem", "Vision features"],
         "disadvantages": ["Newer platform", "Limited availability", "Documentation gaps", "Regional restrictions"],
         "link": "https://cloud.google.com/vertex-ai/pricing",
-        "logo_url": "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=100&h=100&fit=crop"
+        "logo_url": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/google.svg"
     },
     {
         "id": "replicate",
@@ -172,7 +204,7 @@ SAAS_SERVICES = [
         "advantages": ["Open source models", "Pay per use", "No lock-in", "Community driven"],
         "disadvantages": ["Variable performance", "Cold starts", "Limited support", "Compute costs"],
         "link": "https://replicate.com/pricing",
-        "logo_url": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=100&h=100&fit=crop"
+        "logo_url": "https://replicate.com/favicon.ico"
     },
 
     # Database Services
@@ -189,8 +221,8 @@ SAAS_SERVICES = [
         ],
         "advantages": ["Managed service", "Global clusters", "Built-in security", "Easy scaling"],
         "disadvantages": ["Can be expensive", "Vendor lock-in", "Complex pricing", "Network charges"],
-        "link": "https://mongodb.com/pricing",
-        "logo_url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=100&h=100&fit=crop"
+        "link": "https://www.mongodb.com/pricing",
+        "logo_url": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mongodb.svg"
     },
     {
         "id": "planetscale",
@@ -205,7 +237,7 @@ SAAS_SERVICES = [
         "advantages": ["Database branching", "Serverless scaling", "Zero downtime schema changes", "MySQL compatible"],
         "disadvantages": ["No free tier", "MySQL only", "Learning curve", "Relatively new"],
         "link": "https://planetscale.com/pricing",
-        "logo_url": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=100&h=100&fit=crop"
+        "logo_url": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/planetscale.svg"
     },
     {
         "id": "supabase",
@@ -221,7 +253,7 @@ SAAS_SERVICES = [
         "advantages": ["Open source", "Real-time features", "Auth built-in", "PostgreSQL based"],
         "disadvantages": ["Smaller ecosystem", "Limited regions", "Newer platform", "PostgreSQL only"],
         "link": "https://supabase.com/pricing",
-        "logo_url": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=100&h=100&fit=crop"
+        "logo_url": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/supabase.svg"
     },
 
     # Email Services
@@ -238,8 +270,8 @@ SAAS_SERVICES = [
         ],
         "advantages": ["High deliverability", "Comprehensive APIs", "Marketing tools", "Reliable service"],
         "disadvantages": ["Can be expensive", "Complex pricing", "Learning curve", "Support quality varies"],
-        "link": "https://sendgrid.com/pricing",
-        "logo_url": "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=100&h=100&fit=crop"
+        "link": "https://sendgrid.com/pricing/",
+        "logo_url": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/sendgrid.svg"
     },
     {
         "id": "mailgun",
@@ -254,8 +286,8 @@ SAAS_SERVICES = [
         ],
         "advantages": ["Developer focused", "Good documentation", "Flexible API", "EU/US regions"],
         "disadvantages": ["Limited templates", "No marketing tools", "Technical setup", "Support response time"],
-        "link": "https://mailgun.com/pricing",
-        "logo_url": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=100&h=100&fit=crop"
+        "link": "https://www.mailgun.com/pricing/",
+        "logo_url": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mailgun.svg"
     },
     {
         "id": "resend",
@@ -271,13 +303,13 @@ SAAS_SERVICES = [
         "advantages": ["Modern developer experience", "Great documentation", "Simple pricing", "React email integration"],
         "disadvantages": ["Newer service", "Limited features", "Small market share", "No marketing tools"],
         "link": "https://resend.com/pricing",
-        "logo_url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=100&h=100&fit=crop"
+        "logo_url": "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/resend.svg"
     }
 ]
 
 @app.get("/")
 async def root():
-    return {"message": "SaaS Scout API - Compare pricing of popular SaaS providers"}
+    return {"message": "SaaS Scout API - Compare pricing of popular SaaS providers", "version": "2.0", "services_count": len(SAAS_SERVICES)}
 
 @app.get("/api/services", response_model=List[SaasService])
 async def get_services(
