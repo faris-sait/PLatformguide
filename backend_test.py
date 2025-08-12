@@ -307,7 +307,9 @@ class SaaSScoutAPITester:
             self.test_category_filtering,
             self.test_search_functionality,
             self.test_sorting_functionality,
-            self.test_specific_services
+            self.test_specific_services,
+            self.test_hosting_services,
+            self.test_new_services_search
         ]
         
         for test in tests:
