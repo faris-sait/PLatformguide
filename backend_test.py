@@ -15,7 +15,7 @@ class SaaSScoutAPITester:
         self.tests_run = 0
         self.tests_passed = 0
         self.expected_categories = ["Database", "Email", "Hosting", "LLM/AI"]
-        self.expected_services_count = 16
+        self.expected_services_count = 17
 
     def log_test(self, name: str, success: bool, details: str = ""):
         """Log test results"""
