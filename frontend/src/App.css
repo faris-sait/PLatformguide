@@ -1,34 +1,191 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Global Styles */
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 50%, #e0e7ff 100%);
+  min-height: 100vh;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Card hover effects */
+.group:hover {
+  transform: translateY(-2px);
+}
+
+/* Smooth transitions for interactive elements */
+button {
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+/* Badge animations */
+[data-radix-collection-item] {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive design improvements */
+@media (max-width: 768px) {
+  .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  header .flex {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
 }
 
-.App-link {
-    color: #61dafb;
+@media (max-width: 640px) {
+  .flex-col.lg\\:flex-row {
+    flex-direction: column;
+  }
+  
+  .flex.gap-4.flex-wrap.lg\\:flex-nowrap {
+    flex-direction: column;
+  }
+  
+  .w-full.lg\\:w-48,
+  .w-full.lg\\:w-40 {
+    width: 100%;
+  }
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Enhanced focus states for accessibility */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+/* Loading animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Custom table styles */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+table th {
+  position: sticky;
+  top: 0;
+  background: rgba(249, 250, 251, 0.9);
+  backdrop-filter: blur(8px);
+}
+
+/* Enhanced card styles */
+.card-gradient {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.6) 100%);
+}
+
+/* Micro-interactions */
+.hover-lift:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Enhanced badge styles */
+.badge-glow {
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+}
+
+/* Typography improvements */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/* Enhanced button styles */
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.4);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 20px 0 rgba(99, 102, 241, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Custom selection styles */
+::selection {
+  background: rgba(99, 102, 241, 0.2);
+  color: #1e293b;
+}
+
+/* Enhanced search input */
+.search-input {
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  background: rgba(255, 255, 255, 0.95);
 }
