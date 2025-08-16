@@ -11,7 +11,9 @@ import { Switch } from './components/ui/switch';
 import { Search, Grid, List, TrendingUp, ExternalLink, Star, Trophy, Filter, Sun, Moon } from 'lucide-react';
 import './App.css';
 
-const API_BASE_URL = process.env.REACT_APP_BACKEND_URL ? `https://${process.env.REACT_APP_BACKEND_URL}` : 'http://localhost:8001';
+// For development purposes, prioritize local backend
+const API_BASE_URL = window.location.hostname === 'localhost' ? 'http://localhost:8001' : 
+  (process.env.REACT_APP_BACKEND_URL ? `https://${process.env.REACT_APP_BACKEND_URL}` : 'http://localhost:8001');
 
 function App() {
   const [services, setServices] = useState([]);
