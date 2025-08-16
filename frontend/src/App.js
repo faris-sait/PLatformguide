@@ -177,17 +177,20 @@ function App() {
     <div className={`min-h-screen transition-all duration-300 ${isDarkMode ? 'dark bg-gray-900' : 'bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100'}`}>
       {/* Header */}
       <header className={`backdrop-blur-md border-b sticky top-0 z-50 transition-all duration-300 ${isDarkMode ? 'bg-gray-800/70 border-gray-700/20' : 'bg-white/70 border-white/20'}`}>
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+        <div className="max-w-7xl mx-auto px-4 py-4 sm:py-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex-shrink-0">
+              <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                 PlatformGuide
               </h1>
-              <p className={`mt-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Compare pricing of popular SaaS providers & AI tools</p>
+              <p className={`mt-1 text-sm sm:text-base ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                Compare pricing of popular SaaS providers & AI tools
+              </p>
             </div>
-            <div className="flex items-center gap-4">
+            
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
               {/* Theme Toggle */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 order-2 sm:order-1">
                 <Sun className={`h-4 w-4 ${isDarkMode ? 'text-gray-500' : 'text-yellow-500'}`} />
                 <Switch
                   checked={isDarkMode}
@@ -197,26 +200,31 @@ function App() {
                 <Moon className={`h-4 w-4 ${isDarkMode ? 'text-blue-400' : 'text-gray-500'}`} />
               </div>
               
-              <Badge variant="secondary" className={isDarkMode ? 'bg-gray-700 text-gray-300' : 'bg-indigo-100 text-indigo-800'}>
-                {services.length} Services
-              </Badge>
-              <div className="flex gap-2">
-                <Button
-                  variant={viewMode === 'cards' ? 'default' : 'outline'}
-                  size="sm"
-                  onClick={() => setViewMode('cards')}
-                  className={viewMode === 'cards' ? 'bg-indigo-600 hover:bg-indigo-700' : ''}
-                >
-                  <Grid className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant={viewMode === 'table' ? 'default' : 'outline'}
-                  size="sm"
-                  onClick={() => setViewMode('table')}
-                  className={viewMode === 'table' ? 'bg-indigo-600 hover:bg-indigo-700' : ''}
-                >
-                  <List className="h-4 w-4" />
-                </Button>
+              <div className="flex items-center justify-between w-full sm:w-auto gap-3 order-1 sm:order-2">
+                <Badge variant="secondary" className={`text-xs sm:text-sm ${isDarkMode ? 'bg-gray-700 text-gray-300' : 'bg-indigo-100 text-indigo-800'}`}>
+                  {services.length} Services
+                </Badge>
+                
+                <div className="flex gap-2">
+                  <Button
+                    variant={viewMode === 'cards' ? 'default' : 'outline'}
+                    size="sm"
+                    onClick={() => setViewMode('cards')}
+                    className={`h-9 w-9 sm:h-8 sm:w-auto sm:px-3 ${viewMode === 'cards' ? 'bg-indigo-600 hover:bg-indigo-700' : ''}`}
+                  >
+                    <Grid className="h-4 w-4" />
+                    <span className="sr-only sm:not-sr-only sm:ml-2 hidden sm:inline">Cards</span>
+                  </Button>
+                  <Button
+                    variant={viewMode === 'table' ? 'default' : 'outline'}
+                    size="sm"
+                    onClick={() => setViewMode('table')}
+                    className={`h-9 w-9 sm:h-8 sm:w-auto sm:px-3 ${viewMode === 'table' ? 'bg-indigo-600 hover:bg-indigo-700' : ''}`}
+                  >
+                    <List className="h-4 w-4" />
+                    <span className="sr-only sm:not-sr-only sm:ml-2 hidden sm:inline">Table</span>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
