@@ -410,3 +410,111 @@ p {
 .animate-slide-in:nth-child(4) { animation-delay: 0.4s; }
 .animate-slide-in:nth-child(5) { animation-delay: 0.5s; }
 .animate-slide-in:nth-child(6) { animation-delay: 0.6s; }
+
+/* Line clamping utilities for text truncation */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  /* Ensure minimum touch target size for mobile */
+  button,
+  .cursor-pointer,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Improve mobile table scrolling */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Better mobile card spacing */
+  .mobile-card-spacing {
+    margin-bottom: 1rem;
+  }
+  
+  /* Mobile-friendly text sizes */
+  .mobile-text-sm {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  .mobile-text-base {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  /* Improved mobile padding */
+  .mobile-p-4 {
+    padding: 1rem;
+  }
+  
+  .mobile-p-6 {
+    padding: 1.5rem;
+  }
+}
+
+/* Tablet-specific improvements */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Hybrid layouts for tablet */
+  .tablet-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Better tablet navigation */
+  .tablet-nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* Desktop improvements */
+@media (min-width: 1024px) {
+  /* Full hover states for desktop */
+  .desktop-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .dark .desktop-hover:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Large desktop constraints */
+@media (min-width: 1440px) {
+  .max-w-screen-2xl {
+    max-width: 1536px;
+  }
+  
+  /* Better spacing for large screens */
+  .large-desktop-spacing {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
