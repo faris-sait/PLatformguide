@@ -233,54 +233,59 @@ function App() {
 
       <main className="max-w-7xl mx-auto px-4 py-8">
         {/* Filters */}
-        <div className={`backdrop-blur-md rounded-2xl p-6 mb-8 border transition-all duration-300 ${isDarkMode ? 'bg-gray-800/70 border-gray-700/20' : 'bg-white/70 border-white/20'}`}>
-          <div className="flex flex-col lg:flex-row gap-4">
-            <div className="flex-1">
+        <div className={`backdrop-blur-md rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8 border transition-all duration-300 ${isDarkMode ? 'bg-gray-800/70 border-gray-700/20' : 'bg-white/70 border-white/20'}`}>
+          <div className="flex flex-col gap-4">
+            {/* Search bar - full width on mobile */}
+            <div className="w-full">
               <div className="relative">
                 <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 ${isDarkMode ? 'text-gray-400' : 'text-gray-400'}`} />
                 <Input
                   placeholder="Search services, features, or advantages..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className={`pl-10 transition-all duration-300 ${isDarkMode ? 'bg-gray-700/80 border-gray-600/40 text-white focus:bg-gray-700' : 'bg-white/80 border-white/40 focus:bg-white'}`}
+                  className={`pl-10 h-11 sm:h-10 text-base sm:text-sm transition-all duration-300 ${isDarkMode ? 'bg-gray-700/80 border-gray-600/40 text-white focus:bg-gray-700' : 'bg-white/80 border-white/40 focus:bg-white'}`}
                 />
               </div>
             </div>
             
-            <div className="flex gap-4 flex-wrap lg:flex-nowrap">
-              <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                <SelectTrigger className={`w-full lg:w-48 transition-all duration-300 ${isDarkMode ? 'bg-gray-700/80 border-gray-600/40 text-white' : 'bg-white/80 border-white/40'}`}>
-                  <Filter className="h-4 w-4 mr-2" />
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent className={isDarkMode ? 'bg-gray-800 border-gray-700' : ''}>
-                  {categories.map(category => (
-                    <SelectItem key={category} value={category} className={isDarkMode ? 'text-white hover:bg-gray-700' : ''}>
-                      {category === 'all' ? 'All Categories' : category}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+            {/* Filter controls - responsive layout */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <div className="flex-1 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+                <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                  <SelectTrigger className={`h-11 sm:h-10 transition-all duration-300 ${isDarkMode ? 'bg-gray-700/80 border-gray-600/40 text-white' : 'bg-white/80 border-white/40'}`}>
+                    <Filter className="h-4 w-4 mr-2 flex-shrink-0" />
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent className={isDarkMode ? 'bg-gray-800 border-gray-700' : ''}>
+                    {categories.map(category => (
+                      <SelectItem key={category} value={category} className={isDarkMode ? 'text-white hover:bg-gray-700' : ''}>
+                        {category === 'all' ? 'All Categories' : category}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
 
-              <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className={`w-full lg:w-40 transition-all duration-300 ${isDarkMode ? 'bg-gray-700/80 border-gray-600/40 text-white' : 'bg-white/80 border-white/40'}`}>
-                  <TrendingUp className="h-4 w-4 mr-2" />
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent className={isDarkMode ? 'bg-gray-800 border-gray-700' : ''}>
-                  <SelectItem value="name" className={isDarkMode ? 'text-white hover:bg-gray-700' : ''}>Name</SelectItem>
-                  <SelectItem value="category" className={isDarkMode ? 'text-white hover:bg-gray-700' : ''}>Category</SelectItem>
-                  <SelectItem value="price" className={isDarkMode ? 'text-white hover:bg-gray-700' : ''}>Price</SelectItem>
-                </SelectContent>
-              </Select>
+                <Select value={sortBy} onValueChange={setSortBy}>
+                  <SelectTrigger className={`h-11 sm:h-10 transition-all duration-300 ${isDarkMode ? 'bg-gray-700/80 border-gray-600/40 text-white' : 'bg-white/80 border-white/40'}`}>
+                    <TrendingUp className="h-4 w-4 mr-2 flex-shrink-0" />
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent className={isDarkMode ? 'bg-gray-800 border-gray-700' : ''}>
+                    <SelectItem value="name" className={isDarkMode ? 'text-white hover:bg-gray-700' : ''}>Name</SelectItem>
+                    <SelectItem value="category" className={isDarkMode ? 'text-white hover:bg-gray-700' : ''}>Category</SelectItem>
+                    <SelectItem value="price" className={isDarkMode ? 'text-white hover:bg-gray-700' : ''}>Price</SelectItem>
+                  </SelectContent>
+                </Select>
 
-              <Button
-                variant="outline"
-                onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
-                className={`transition-all duration-300 ${isDarkMode ? 'bg-gray-700/80 border-gray-600/40 hover:bg-gray-700 text-white' : 'bg-white/80 border-white/40 hover:bg-white'}`}
-              >
-                {sortOrder === 'asc' ? '↑' : '↓'}
-              </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
+                  className={`h-11 sm:h-10 px-3 transition-all duration-300 ${isDarkMode ? 'bg-gray-700/80 border-gray-600/40 hover:bg-gray-700 text-white' : 'bg-white/80 border-white/40 hover:bg-white'}`}
+                >
+                  <span className="text-lg sm:text-base">{sortOrder === 'asc' ? '↑' : '↓'}</span>
+                  <span className="ml-2 text-sm hidden sm:inline">Sort</span>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
