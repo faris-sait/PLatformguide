@@ -10,7 +10,7 @@ import json
 from typing import Dict, List, Any
 
 class SaaSScoutAPITester:
-    def __init__(self, base_url="https://clean-attribution.preview.emergentagent.com"):
+    def __init__(self, base_url="https://adaptive-ui-1.preview.emergentagent.com"):
         self.base_url = base_url
         self.tests_run = 0
         self.tests_passed = 0
